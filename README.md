@@ -45,7 +45,7 @@ For advanced researchers and developers, we provide model finetune and training 
 
 Contributors are welcomed to include more model architectures and tasks!
 
-### 3. **SpeechScore**  
+### 3. **SpeechScore [[文档](https://github.com/modelscope/ClearerVoice-Studio/blob/main/speechscore/README.md)]**  
 <a href="https://github.com/modelscope/ClearerVoice-Studio/tree/main/speechscore">`SpeechScore`<a/> is a speech quality assessment toolkit. We include it here to evaluate different model performance. SpeechScore includes many popular speech metrics:
 
 - Signal-to-Noise Ratio (SNR)
