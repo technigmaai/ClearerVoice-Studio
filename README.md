@@ -28,7 +28,7 @@
 ## Contents of this repository
 This repository is organized into three main components: **[ClearVoice](https://github.com/modelscope/ClearerVoice-Studio/tree/main/clearvoice)**, **[Train](https://github.com/modelscope/ClearerVoice-Studio/tree/main/train)**, and **[SpeechScore](https://github.com/modelscope/ClearerVoice-Studio/tree/main/speechscore)**.
 
-### 1. **ClearVoice [[文档](https://github.com/modelscope/ClearerVoice-Studio/blob/main/clearvoice/README.md)]**  
+### 1. **ClearVoice [[Readme](https://github.com/modelscope/ClearerVoice-Studio/blob/main/clearvoice/README.md)][[文档](https://github.com/modelscope/ClearerVoice-Studio/blob/main/clearvoice/README.md)]**  
 ClearVoice offers a user-friendly  solution for speech processing tasks such as speech denoising, separation, super-resolution, audio-visual target speaker extraction, and more. It is designed as a unified inference platform leveraged pre-trained models (e.g., [FRCRN](https://arxiv.org/abs/2206.07293), [MossFormer](https://arxiv.org/abs/2302.11824)), all trained on extensive datasets. If you're looking for a tool to improve speech quality, ClearVoice is the perfect choice. Simply click on [`ClearVoice`](https://github.com/modelscope/ClearerVoice-Studio/tree/main/clearvoice) and follow our detailed instructions to get started.
 
 ### 2. **Train**  
@@ -45,7 +45,7 @@ For advanced researchers and developers, we provide model finetune and training 
 
 Contributors are welcomed to include more model architectures and tasks!
 
-### 3. **SpeechScore [[文档](https://github.com/modelscope/ClearerVoice-Studio/blob/main/speechscore/README.md)]**  
+### 3. **SpeechScore [[Readme](https://github.com/modelscope/ClearerVoice-Studio/blob/main/speechscore/README.md)][[文档](https://github.com/modelscope/ClearerVoice-Studio/blob/main/speechscore/README.md)]**  
 <a href="https://github.com/modelscope/ClearerVoice-Studio/tree/main/speechscore">`SpeechScore`<a/> is a speech quality assessment toolkit. We include it here to evaluate different model performance. SpeechScore includes many popular speech metrics:
 
 - Signal-to-Noise Ratio (SNR)
