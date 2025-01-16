@@ -67,7 +67,7 @@ def decode_one_audio_mossformer2_ss_16k(model, device, inputs, args):
     """
     out = []  # Initialize the list to store outputs
     decode_do_segment = False  # Flag to determine if segmentation is needed
-    window = args.sampling_rate * args.decode_window  # Decoding window length
+    window = int(args.sampling_rate * args.decode_window)  # Decoding window length
     stride = int(window * 0.75)  # Decoding stride if segmentation is used
     b, t = inputs.shape  # Get batch size and input length
 
@@ -142,7 +142,7 @@ def decode_one_audio_frcrn_se_16k(model, device, inputs, args):
     """
     decode_do_segment = False  # Flag to determine if segmentation is needed
 
-    window = args.sampling_rate * args.decode_window  # Decoding window length
+    window = int(args.sampling_rate * args.decode_window)  # Decoding window length
     stride = int(window * 0.75)  # Decoding stride for segmenting the input
     b, t = inputs.shape  # Get batch size (b) and input length (t)
 
@@ -210,7 +210,7 @@ def decode_one_audio_mossformergan_se_16k(model, device, inputs, args):
         numpy.ndarray: The decoded audio output, which has been enhanced by the model.
     """
     decode_do_segment = False  # Flag to determine if segmentation is needed
-    window = args.sampling_rate * args.decode_window  # Decoding window length
+    window = int(args.sampling_rate * args.decode_window)  # Decoding window length
     stride = int(window * 0.75)  # Decoding stride for segmenting the input
     b, t = inputs.shape  # Get batch size (b) and input length (t)
 
@@ -274,7 +274,7 @@ def _decode_one_audio_mossformergan_se_16k(model, device, inputs, norm_factor, a
     """
     input_len = inputs.size(-1)  # Get the length of the input audio
     nframe = int(np.ceil(input_len / args.win_inc))  # Calculate the number of frames based on window increment
-    padded_len = nframe * args.win_inc  # Calculate the padded length to fit the model
+    padded_len = int(nframe * args.win_inc)  # Calculate the padded length to fit the model
     padding_len = padded_len - input_len  # Determine how much padding is needed
 
     # Pad the input audio with the beginning of the input
