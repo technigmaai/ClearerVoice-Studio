@@ -1,6 +1,6 @@
 # ClearVoice
 
-## 👉🏻[HuggingFace Space Demo](https://huggingface.co/spaces/alibabasglab/ClearVoice)👈🏻
+## 👉🏻[HuggingFace Space Demo](https://huggingface.co/spaces/alibabasglab/ClearVoice)👈🏻 |  👉🏻[ModelScope Space Demo](https://modelscope.cn/studios/iic/ClearerVoice-Studio)👈🏻 
 
 ## Table of Contents
 
@@ -57,8 +57,6 @@ cd clearvoice
 python demo_with_more_comments.py
 ```
 
-
-
 - You may activate each demo case by setting to True in `demo.py` and `demo_with_more_comments.py`.
 - Supported audio format: .flac .wav
 - Supported video format: .avi .mp4 .mov .webm
@@ -89,6 +87,8 @@ Parameter Description:
 - `input_path`: Path to the input audio/video file, input audio/video directory, or a list file (.scp) 
 - `online_write`: Set to `True` to enable saving the enhanced/separated audio/video directly to local files during processing, otherwise, the enhanced/separated audio is returned. (Only supports `False` for `speech_enhancement`, `speech_separation` when processing single wave file`)
 - `output_path`: Path to a file or a directory to save the enhanced/separated audio/video file
+
+这里给出了一个较详细的中文使用教程：https://stable-learn.com/zh/clearvoice-studio-tutorial 
 
 ## 3. Model Performance
 
