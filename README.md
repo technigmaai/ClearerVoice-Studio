@@ -7,7 +7,7 @@
 #### 👉🏻[HuggingFace Demo](https://huggingface.co/spaces/alibabasglab/ClearVoice)👈🏻  | 👉🏻[ModelScope Demo](https://modelscope.cn/studios/iic/ClearerVoice-Studio) ｜ 👉🏻[SpeechScore Demo](https://huggingface.co/spaces/alibabasglab/SpeechScore)👈🏻
 
 ---
-![GitHub Repo stars](https://img.shields.io/github/stars/modelscope/ClearerVoice-Studio) Please support our community project 💖 by starring it on GitHub 加⭐支持 🙏 
+![GitHub Repo stars](https://img.shields.io/github/stars/modelscope/ClearerVoice-Studio) Please support our community project by starring ⭐ it on GitHub！
 
 记得点击右上角的星星⭐来支持我们一下，您的支持是我们更新模型的最大动力！
 
