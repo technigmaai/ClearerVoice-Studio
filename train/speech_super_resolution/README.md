@@ -2,4 +2,4 @@
 
 ## 1. Introduction
 
-This repository provides a flexible training or finetune scripts for speech super-resolution models. Currently, it supports lower sampling rates (>= 8kHz) to 48kHz sampling rate
+This repository provides a flexible training and finetune scripts for optimizing speech super-resolution models. One or multiple models can be trained to scale multiple lower sampling rates (>= 8kHz) to 48kHz sampling rate
