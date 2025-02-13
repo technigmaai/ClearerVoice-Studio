@@ -126,4 +126,17 @@ We evaluated our released speech enhancement models on the popular benchmarks: [
 
 **Speech separation models:**
 
-We evaluated our speech separation model MossFormer2_SS_16K on the popular benchmark testset: LRS2_2mix (16 kHz), WSJ0-2mix (8 kHz), Libri2Mix (8 kHz), WHAM! (8 kHz). We compare our model results with the published results for Conv-TasNet, DualPathRNN, DPTNet, SepFormer, TDANet, TF-GridNet, SPMamba from paper1 and paper2. Note that the results for MossFormer2_SS_16K model is obtained from a unified model without retraining on each separated dataset. All the results for the compared models are trained and tested on each datasets separately.
+We evaluated our speech separation model `MossFormer2_SS_16K` on the popular benchmark testset: LRS2_2Mix (16 kHz), WSJ0-2Mix (8 kHz), Libri2Mix (8 kHz), WHAM! (8 kHz). We compare our model with following state-of-the-art models: [Conv-TasNet](https://arxiv.org/abs/1809.07454), [DualPathRNN](https://arxiv.org/abs/1910.06379), [DPTNet](https://arxiv.org/abs/2007.13975), [SepFormer](https://arxiv.org/abs/2010.13154), [TDANet](https://openreview.net/pdf?id=fzberKYWKsI), [TF-GridNet](https://arxiv.org/abs/2209.03952), [SPMamba](https://arxiv.org/abs/2404.02063). The testing results are taken from [TDANet Github repo](https://github.com/JusperLee/TDANet) and [SPMamba GitHub repo](https://github.com/JusperLee/SPMamba). The performance metric of [SI-SNRi](https://arxiv.org/abs/1811.02508) (SI-SNR improvement) is used for the evaluations.
+
+|Model |LRS2_2Mix (16 kHz)|WSJ0-2Mix (8 kHz)|Libri2Mix (8kHz)|WHAM! (8 kHz)|
+|------|------------------|-----------------|----------------|-------------|
+|Conv-TasNet |10.6|15.3|12.2|12.7|
+|DualPathRNN|12.7|18.8|16.1|13.7|
+|DPTNet     |13.3|20.2|16.7|14.9|     
+|SepFormer  |13.5|20.4|17.0|14.4|
+|TDANet Large|14.2|18.5|17.4|15.2|
+|TF-GridNet   |-|**22.8**|19.8|16.9|
+|SPMamba      |-|22.5|**19.9**|**17.4**|
+|MossFormer2_SS_16K|**15.5**|22.0|16.7|**17.4**|
+
+> **Note:** The MossFormer2_SS_16K results presented are from our unified model, evaluated without retraining on individual datasets.  This 16 kHz model was used for speech separation on the 16 kHz test set, with scores then calculated on the downsampled 8 kHz audio.  All comparison models were trained and tested separately on each dataset.
