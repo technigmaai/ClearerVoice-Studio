@@ -140,3 +140,14 @@ We evaluated our speech separation model `MossFormer2_SS_16K` on the popular ben
 |MossFormer2_SS_16K|**15.5**|22.0|16.7|**17.4**|
 
 > **Note:** The MossFormer2_SS_16K results presented are from our unified model, evaluated without retraining on individual datasets.  This 16 kHz model was used for speech separation on the 16 kHz test set, with scores then calculated on the downsampled 8 kHz audio.  All comparison models were trained and tested separately on each dataset.
+
+**Speech super-resolution model:**
+
+We demonstrated the effectiveness of our speech super-resolution model, `MossFormer2_SR_48K`, using the VoiceBank+DEMAND 48 kHz test set.  For super-resolution evaluation, the test set was downsampled to 16 kHz, 24 kHz, and 32 kHz.  The Log Spectral Distance (LSD) and PESQ metrics was used for evaluation. Recognizing that speech quality is impacted by both lower sampling rates and background noise, we also incorporated our speech enhancement model, `MossFormer2_SE_48K`, to reduce noise prior to super-resolution processing.  Results are presented in the following table.
+
+|Model | 16 kHz | 24 kHz | 32 kHz | 48 kHz |PESQ|
+|------|--------|--------|--------|--------|-----|
+|Origin|2.80    | 2.60   |  2.29  |1.46    |1.97|
+|Enhanced|1.93  |1.52    |   1.50 |1.42    |3.15 |
+
+For the 48 kHz case, speech super-resolution was not applied.  The final two columns show that` MossFormer2_SE_48K` significantly improves the 16 kHz PESQ score but only marginally improves LSD.  Therefore, LSD improvements at 16 kHz, 24 kHz, and 32 kHz are primarily attributed to `MossFormer2_SR_48K`.
