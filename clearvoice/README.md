@@ -149,6 +149,6 @@ We demonstrated the effectiveness of our speech super-resolution model, `MossFor
 |Model | 16 kHz | 24 kHz | 32 kHz | 48 kHz |PESQ|
 |------|--------|--------|--------|--------|-----|
 |Origin|2.80    | 2.60   |  2.29  |1.46    |1.97|
-|Enhanced|1.93  |1.52    |   1.50 |1.42    |3.15 |
+|Enhanced|**1.93**  |**1.52**    |   **1.50** |**1.42**    |**3.15** |
 
 For the 48 kHz case, speech super-resolution was not applied.  The final two columns show that` MossFormer2_SE_48K` significantly improves the 16 kHz PESQ score but only marginally improves LSD.  Therefore, LSD improvements at 16 kHz, 24 kHz, and 32 kHz are primarily attributed to `MossFormer2_SR_48K`.
