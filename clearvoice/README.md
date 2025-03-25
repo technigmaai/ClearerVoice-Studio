@@ -9,15 +9,16 @@
 
 ## 1. Introduction
 
-ClearVoice offers a unified inference platform for `speech enhancement`, `speech separation`, and `audio-visual target speaker extraction`. It is designed to simplify the adoption of our pre-trained models for your speech processing purpose or the integration into your projects. Currently, we provide the following pre-trained models:
+ClearVoice offers a unified inference platform for `speech enhancement`, `speech separation`, `speech super-resolution`, and `audio-visual target speaker extraction`. It is designed to simplify the adoption of our pre-trained models for your speech processing purpose or the integration into your projects. Currently, we provide the following pre-trained models:
 
 | Tasks (Sampling rate) | Models (HuggingFace Links)|
 |-------|--------------------------|
-|Speech Enhancement (16kHz & 48kHz)| `MossFormer2_SE_48K` ([link](https://huggingface.co/alibabasglab/MossFormer2_SE_48K)), `FRCRN_SE_16K` ([link](https://huggingface.co/alibabasglab/FRCRN_SE_16K)), `MossFormerGAN_SE_16K` ([link](https://huggingface.co/alibabasglab/MossFormerGAN_SE_16K)) | 
-|Speech Separation (16kHz)|`MossFormer2_SS_16K` ([link](https://huggingface.co/alibabasglab/MossFormer2_SS_16K))|
-|Audio-Visual Target Speaker Extraction (16kHz)|`AV_MossFormer2_TSE_16K` ([link](https://huggingface.co/alibabasglab/AV_MossFormer2_TSE_16K))|
+|Speech Enhancement (16kHz & 48kHz)| `MossFormer2_SE_48K` ([HuggingFace](https://huggingface.co/alibabasglab/MossFormer2_SE_48K)), `FRCRN_SE_16K` ([HuggingFace](https://huggingface.co/alibabasglab/FRCRN_SE_16K)), `MossFormerGAN_SE_16K` ([HuggingFace](https://huggingface.co/alibabasglab/MossFormerGAN_SE_16K)) | 
+|Speech Separation (16kHz)|`MossFormer2_SS_16K` ([HuggingFace](https://huggingface.co/alibabasglab/MossFormer2_SS_16K))|
+|Speech Super-Resolution (48kHz)|`MossFormer2_SR_48K`([HuggingFace](https://huggingface.co/alibabasglab/MossFormer2_SR_48K))|
+|Audio-Visual Target Speaker Extraction (16kHz)|`AV_MossFormer2_TSE_16K` ([HuggingFace](https://huggingface.co/alibabasglab/AV_MossFormer2_TSE_16K))|
 
-You don't need to manually download the pre-trained models—they are automatically fetched during inference.
+You don't need to manually download the pre-trained models—they are automatically fetched from HuggingFace during inference. If the models are not downloaded sucessfully to `./clearvoice/checkpoints`, you can manually download them from [ModelScope](https://modelscope.cn/models/iic/ClearerVoice-Studio/summary). 
 
 ## 2. Usage
 
