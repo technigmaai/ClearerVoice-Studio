@@ -1,7 +1,7 @@
 from clearvoice import ClearVoice
 
 ##-----Demo One: use MossFormer2_SR_48K model for speech super-resolution -----------------
-if True:
+if False:
     myClearVoice = ClearVoice(task='speech_super_resolution', model_names=['MossFormer2_SR_48K'])
 
     ##1sd calling method: process the waveform from input file and return output waveform, then write to output_MossFormer2_SR_48K_xxx with the same audio format
@@ -82,7 +82,7 @@ if False:
     myClearVoice = ClearVoice(task='speech_enhancement', model_names=['MossFormerGAN_SE_16K'])
 
     ##1sd calling method: process the waveform from input.wav and return output waveform, then write to output_MossFormerGAN_SE_16K.wav
-    output_wav = myClearVoice(input_path='samples/input.wav', online_write=False)
+    output_wav = myClearVoice(input_path='samples/test.wav', online_write=False)
     myClearVoice.write(output_wav, output_path='samples/output_MossFormerGAN_SE_16K.wav')
 
     ##2nd calling method: process all wav files in 'path_to_input_wavs/' and write outputs to 'path_to_output_wavs'
@@ -92,7 +92,7 @@ if False:
     myClearVoice(input_path='samples/scp/audio_samples.scp', online_write=True, output_path='samples/path_to_output_wavs_scp')
 
 ##-----Demo Six: use MossFormer2_SS_16K model for speech separation -----------------
-if False:
+if True:
     myClearVoice = ClearVoice(task='speech_separation', model_names=['MossFormer2_SS_16K'])
 
     ##1sd calling method: process an input waveform and return output waveform, then write to output_MossFormer2_SS_16K_s1.wav and output_MossFormer2_SS_16K_s2.wav

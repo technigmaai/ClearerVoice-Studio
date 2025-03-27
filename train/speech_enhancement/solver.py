@@ -213,6 +213,7 @@ class Solver(object):
             # Check whether to early stop and to reduce learning rate
             find_best_model = False
             if val_loss >= self.best_val_loss:
+                self.best_val_loss = val_loss
                 self.val_no_impv += 1
                 if self.val_no_impv == 5:
                     self.halving = True
