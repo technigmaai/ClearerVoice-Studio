@@ -63,6 +63,8 @@ If you don't have any training dataset to start with, we recommend you to downlo
 
 Replace `data/tr_demand_28_spks_16k.scp` and `data/cv_demand_testset_16k.scp` with your new .scp files in `config/train/*.yaml`. Now it is ready to train the models.
 
+> **Note:** If your training data is much small (<100 hours) and each utterance length is longer than 20 seconds, we recommend that you crop the utterance into smaller segments (4s ~ 5s). This can increase your data size and avoid extra data loading time.
+
 4. **Start Training**
 
 ``` sh
