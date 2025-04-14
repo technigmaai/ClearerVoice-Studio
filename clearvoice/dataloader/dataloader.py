@@ -88,13 +88,6 @@ def audioread(path, sampling_rate, use_norm):
     audio_info = {}
     ext = get_file_extension(path).replace('.', '')
     audio_info['ext']=ext
-    
-    try:
-        data = AudioSegment.from_file(path)
-    except Exception as e:
-        print(f"Error loading file: {e}")
-        return None
-        
     data = read_audio(path)
    
     audio_info['sample_rate'] = data.frame_rate
