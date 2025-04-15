@@ -13,6 +13,7 @@
 
 ## News :fire:
 - Upcoming: More tasks will be added to ClearVoice.
+- [2025.4] Added data generation scripts for training/finetuning speech enhancement models. The scripts generate either noisy speech or noisy-reverberant speech. Please check [here](https://github.com/modelscope/ClearerVoice-Studio/tree/main/train/data_generation/speech_enhancement).
 - [2025.1] ClearVoice demo is ready for try on both [HuggingFace](https://huggingface.co/spaces/alibabasglab/ClearVoice) and [ModelScope](https://modelscope.cn/studios/iic/ClearerVoice-Studio). However, HuggingFace has limited GPU usage, and ModelScope has more GPU usage quota.
 - [2025.1] ClearVoice now offers **speech super-resolution**, also known as bandwidth extension. This feature improves the perceptual quality of speech by converting low-resolution audio (with an effective sampling rate of at least 16,000 Hz) into high-resolution audio with a sampling rate of 48,000 Hz. A full upscaled **LJSpeech-1.1-48kHz dataset** can be downloaded from [HuggingFace](https://huggingface.co/datasets/alibabasglab/LJSpeech-1.1-48kHz) and [ModelScope](https://modelscope.cn/datasets/iic/LJSpeech-1.1-48kHz).
 - [2025.1] ClearVoice now supports more audio formats including **"wav", "aac", "ac3", "aiff", "flac", "m4a", "mp3", "ogg", "opus", "wma", "webm"**, etc. It also supports both mono and stereo channels with 16-bit or 32-bit precisions. A latest version of [ffmpeg](https://github.com/FFmpeg/FFmpeg) is required for audio codecs.  
