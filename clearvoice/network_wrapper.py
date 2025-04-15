@@ -125,7 +125,7 @@ class network_wrapper(nn.Module):
         parser.add_argument('--num-gpu', dest='num_gpu', type=int, default=1, help='Number of GPUs to use')
 
         # Model-specific settings
-        parser.add_argument('--network', type=str, help='Select SE models: FRCRN_SE_16K, MossFormer2_SE_48K')
+        parser.add_argument('--network', type=str, help='Select SR model(currently supports MossFormer2_SR_48K)')
         parser.add_argument('--sampling-rate', dest='sampling_rate', type=int, default=16000, help='Sampling rate')
         parser.add_argument('--one-time-decode-length', dest='one_time_decode_length', type=float, default=60.0, help='Max segment length for one-pass decoding')
         parser.add_argument('--decode-window', dest='decode_window', type=float, default=1.0, help='Decoding chunk size')
