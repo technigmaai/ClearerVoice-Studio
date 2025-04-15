@@ -118,15 +118,15 @@ class network_wrapper(nn.Module):
         parser.add_argument('--config', help='Config file path', action=yamlargparse.ActionConfigFile)
         parser.add_argument('--config_json', type=str, help='Path to the config.json file')
         parser.add_argument('--mode', type=str, default='inference', help='Modes: train or inference')
-        parser.add_argument('--checkpoint-dir', dest='checkpoint_dir', type=str, default='checkpoints/FRCRN_SE_16K', help='Checkpoint directory')
-        parser.add_argument('--input-path', dest='input_path', type=str, help='Path for noisy audio input')
-        parser.add_argument('--output-dir', dest='output_dir', type=str, help='Directory for enhanced audio output')
+        parser.add_argument('--checkpoint-dir', dest='checkpoint_dir', type=str, default='checkpoints/MossFormer2_SR_48K', help='Checkpoint directory')
+        parser.add_argument('--input-path', dest='input_path', type=str, help='Path for low-resolution audio input')
+        parser.add_argument('--output-dir', dest='output_dir', type=str, help='Directory for enhanced high-resolution audio output')
         parser.add_argument('--use-cuda', dest='use_cuda', default=1, type=int, help='Enable CUDA (1=True, 0=False)')
         parser.add_argument('--num-gpu', dest='num_gpu', type=int, default=1, help='Number of GPUs to use')
 
         # Model-specific settings
         parser.add_argument('--network', type=str, help='Select SR model(currently supports MossFormer2_SR_48K)')
-        parser.add_argument('--sampling-rate', dest='sampling_rate', type=int, default=16000, help='Sampling rate')
+        parser.add_argument('--sampling-rate', dest='sampling_rate', type=int, default=48000, help='Sampling rate')
         parser.add_argument('--one-time-decode-length', dest='one_time_decode_length', type=float, default=60.0, help='Max segment length for one-pass decoding')
         parser.add_argument('--decode-window', dest='decode_window', type=float, default=1.0, help='Decoding chunk size')
 
