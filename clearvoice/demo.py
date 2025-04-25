@@ -64,7 +64,7 @@ if False:
     myClearVoice(input_path='samples/scp/audio_samples.scp', online_write=True, output_path='samples/path_to_output_wavs_scp')
     
 ##-----Demo Four: use FRCRN_SE_16K model for speech enhancement -----------------
-if False:
+if True:
     myClearVoice = ClearVoice(task='speech_enhancement', model_names=['FRCRN_SE_16K'])
 
     ##1sd calling method: process an input waveform and return output waveform, then write to output_FRCRN_SE_16K.wav
@@ -92,7 +92,7 @@ if False:
     myClearVoice(input_path='samples/scp/audio_samples.scp', online_write=True, output_path='samples/path_to_output_wavs_scp')
 
 ##-----Demo Six: use MossFormer2_SS_16K model for speech separation -----------------
-if True:
+if False:
     myClearVoice = ClearVoice(task='speech_separation', model_names=['MossFormer2_SS_16K'])
 
     ##1sd calling method: process an input waveform and return output waveform, then write to output_MossFormer2_SS_16K_s1.wav and output_MossFormer2_SS_16K_s2.wav
