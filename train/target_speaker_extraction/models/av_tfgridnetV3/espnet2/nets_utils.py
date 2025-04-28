@@ -566,11 +566,15 @@ def rename_state_dict(
         new_k = k.replace(old_prefix, new_prefix)
         state_dict[new_k] = v
 
+class Swish(torch.nn.Module):
+    """Construct an Swish object."""
+
+    def forward(self, x):
+        """Return Swich activation function."""
+        return x * torch.sigmoid(x)
 
 def get_activation(act):
     """Return activation function."""
-    # Lazy load to avoid unused import
-    from espnet.nets.pytorch_backend.conformer.swish import Swish
 
     activation_funcs = {
         "hardtanh": torch.nn.Hardtanh,
