@@ -21,65 +21,6 @@ def loss_mossformer2_ss(args, inputs, labels, Out_List, device):
     loss_sisnr = get_si_snr_with_pitwrapper(labels, estimates)
     return loss_sisnr
 
-def transducer_loss(
-    log_probs,
-    targets,
-    input_lens,
-    target_lens,
-    blank_index,
-    reduction="mean",
-    use_torchaudio=True,
-):
-    """Transducer loss, see `speechbrain/nnet/loss/transducer_loss.py`.
-
-    Arguments
-    ---------
-    predictions : torch.Tensor
-        Predicted tensor, of shape [batch, maxT, maxU, num_labels].
-    targets : torch.Tensor
-        Target tensor, without any blanks, of shape [batch, target_len].
-    input_lens : torch.Tensor
-        Length of each utterance.
-    target_lens : torch.Tensor
-        Length of each target sequence.
-    blank_index : int
-        The location of the blank symbol among the label indices.
-    reduction : str
-        Specifies the reduction to apply to the output: 'mean' | 'batchmean' | 'sum'.
-    use_torchaudio: bool
-        If True, use Transducer loss implementation from torchaudio, otherwise,
-        use Speechbrain Numba implementation.
-    """
-    input_lens = (input_lens * log_probs.shape[1]).round().int()
-    target_lens = (target_lens * targets.shape[1]).round().int()
-
-    if use_torchaudio:
-        try:
-            from torchaudio.functional import rnnt_loss
-        except ImportError:
-            err_msg = "The dependency torchaudio >= 0.10.0 is needed to use Transducer Loss\n"
-            err_msg += "Cannot import torchaudio.functional.rnnt_loss.\n"
-            err_msg += "To use it, please install torchaudio >= 0.10.0\n"
-            err_msg += "==================\n"
-            err_msg += "Otherwise, you can use our numba implementation, set `use_torchaudio=False`.\n"
-            raise ImportError(err_msg)
-
-        return rnnt_loss(
-            log_probs,
-            targets.int(),
-            input_lens,
-            target_lens,
-            blank=blank_index,
-            reduction=reduction,
-        )
-    else:
-        from speechbrain.nnet.loss.transducer_loss import Transducer
-
-        return Transducer.apply(
-            log_probs, targets, input_lens, target_lens, blank_index, reduction,
-        )
-
-
 class PitWrapper(nn.Module):
     """
     Permutation Invariant Wrapper to allow Permutation Invariant Training
