@@ -64,7 +64,7 @@ if False:
     myClearVoice(input_path='samples/scp/audio_samples.scp', online_write=True, output_path='samples/path_to_output_wavs_scp')
     
 ##-----Demo Four: use FRCRN_SE_16K model for speech enhancement -----------------
-if True:
+if False:
     myClearVoice = ClearVoice(task='speech_enhancement', model_names=['FRCRN_SE_16K'])
 
     ##1sd calling method: process an input waveform and return output waveform, then write to output_FRCRN_SE_16K.wav
@@ -106,11 +106,11 @@ if False:
     myClearVoice(input_path='samples/scp/audio_samples_mix.scp', online_write=True, output_path='samples/path_to_output_wavs_scp')
 
 ##-----Demo Seven: use AV_MossFormer2_TSE_16K model for audio-visual target speaker extraction ------
-if False:
+if True:
     myClearVoice = ClearVoice(task='target_speaker_extraction', model_names=['AV_MossFormer2_TSE_16K'])
 
     #1st calling method: process all video files in 'path_to_input_videos/' and write outputs to 'path_to_output_videos_tse'
-    myClearVoice(input_path='samples/path_to_input_videos_tse', online_write=True, output_path='samples/path_to_output_videos_tse')
+    myClearVoice(input_path='samples/path_to_input_videos_tse/003.avi', online_write=True, output_path='samples/path_to_output_videos_tse')
 
     #2nd calling method: process video files listed in .scp file, and write outputs to 'path_to_output_videos_tse_scp/'
     myClearVoice(input_path='samples/scp/video_samples.scp', online_write=True, output_path='samples/path_to_output_videos_tse_scp')
