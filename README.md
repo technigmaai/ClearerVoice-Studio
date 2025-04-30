@@ -13,6 +13,7 @@
 
 ## News :fire:
 - Upcoming: More tasks will be added to ClearVoice.
+- [2025.4] Updated pip installation for [ClearVoice](https://github.com/modelscope/ClearerVoice-Studio/tree/main/clearvoice). Now you can simply type `pip install clearvoice` to use all the pretrained models in ClearVoice, see project description in PyPi [link](https://pypi.org/project/clearvoice/).
 - [2025.4] Added a training script for speech super-resolution, supporting both retraining and fine-tuning of models. For details, refer to the documentation [here](https://github.com/modelscope/ClearerVoice-Studio/tree/main/train/speech_super_resolution).
 - [2025.4] Added data generation scripts for training/finetuning speech enhancement models. The scripts generate either noisy speech or noisy-reverberant speech. Please check [here](https://github.com/modelscope/ClearerVoice-Studio/tree/main/train/data_generation/speech_enhancement).
 - [2025.1] ClearVoice demo is ready for try on both [HuggingFace](https://huggingface.co/spaces/alibabasglab/ClearVoice) and [ModelScope](https://modelscope.cn/studios/iic/ClearerVoice-Studio). However, HuggingFace has limited GPU usage, and ModelScope has more GPU usage quota.
