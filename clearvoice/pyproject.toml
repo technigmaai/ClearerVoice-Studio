@@ -7,12 +7,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clearvoice"
-version = "0.1.0"
+version = "0.1.1"
 description = "A unified inference platform for speech processing tasks"
 authors = [
   { name = "Zhao Shengkui", email = "shengkui.zhao@alibaba-inc.com" },
   { name = "Pan Zexu", email = "zexu.pan@alibaba-inc.com" },
-  { name = "Nguyen Trung Hieu", email = "trunghieu.nguyen@alibaba-inc.com" }
+  { name = "Nguyen Trung Hieu", email = "trunghieu.nguyen@alibaba-inc.com" },
 ]
 license = "Apache-2.0"
 readme = "README.md"
@@ -41,6 +41,9 @@ dependencies = [
   "tqdm",
   "yamlargparse"
 ]
+
+[project.urls]
+homepage = "https://github.com/modelscope/ClearerVoice-Studio"
 
 [tool.setuptools.package-data]
 "clearvoice" = ["config/**/*.yaml", "config/**/*.json"]

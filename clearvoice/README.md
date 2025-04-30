@@ -22,47 +22,51 @@ You don't need to manually download the pre-trained models—they are automatica
 
 ## 2. Usage
 
-### Step-by-Step Guide
+### Install via PyPI
 
-If you haven't created a Conda environment for ClearerVoice-Studio yet, follow steps 1 and 2. Otherwise, skip directly to step 3.
+1. **Install ClearVoice via PyPI:**
+    ``` sh
+    pip install clearvoice
+    ```
 
-1. **Clone the Repository**
+2. **In your Python code:**
+    ``` python
+    from clearvoice import ClearVoice
+    ```
 
-``` sh
-git clone https://github.com/modelscope/ClearerVoice-Studio.git
-```
+### Install from GitHub
 
-2. **Create Conda Environment**
+1. **Clone the GitHub repository and install the requirements:**
 
-``` sh
-cd ClearerVoice-Studio
-conda create -n ClearerVoice-Studio python=3.8
-conda activate ClearerVoice-Studio
-pip install -r requirements.txt
-```
+    ``` sh
+    git clone https://github.com/modelscope/ClearerVoice-Studio.git
+    cd ClearerVoice-Studio/clearvoice
+    pip install --editable .
+    ```
+2. **In your Python code:**
+    ``` python
+    from clearvoice import ClearVoice
+    ```
 
-It should also work for python 3.9, 3.10 and 3.12! 
-> **Note:** 在ubuntu和windows安装过程中，如果遇到关于c++构建环境的前置安装以及pip setuptools wheel的工具更新问题，请自行手动安装解决 （感谢@RichardQin1）。
+3. **Demo script**
 
-3. **Run Demo**
+    ``` sh
+    cd ClearerVoice-Studio/clearvoice
+    python demo.py
+    ```
 
-``` sh
-cd clearvoice
-python demo.py
-```
+    or 
 
-or 
-
-``` sh
-cd clearvoice
-python demo_with_more_comments.py
-```
+    ``` sh
+    cd ClearerVoice-Studio/clearvoice
+    python demo_with_more_comments.py
+    ```
 
 - You may activate each demo case by setting to True in `demo.py` and `demo_with_more_comments.py`.
 - Supported audio format: .flac .wav
 - Supported video format: .avi .mp4 .mov .webm
 
-4. **Use Scripts**
+### Sample Python Script
 
 Use `MossFormer2_SE_48K` model for fullband (48kHz) speech enhancement task:
 
