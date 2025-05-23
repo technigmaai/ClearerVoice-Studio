@@ -7,13 +7,16 @@ from speechscore import SpeechScore
 if __name__ == '__main__':
     # Initialize a SpeechScore object with a list of score metrics to be evaluated
     # Supports any subsets of the list
+    
+    # Non-instrusive tests ['NISQA', 'DNSMOS', 'SRMR'] : No reference audio is required
+    
     mySpeechScore = SpeechScore([
         'SRMR', 'PESQ', 'NB_PESQ', 'STOI', 'SISDR', 
         'FWSEGSNR', 'LSD', 'BSSEval', 'DNSMOS', 
         'SNR', 'SSNR', 'LLR', 'CSIG', 'CBAK', 
-        'COVL', 'MCD'
+        'COVL', 'MCD', 'NISQA'
     ])
-
+    
     # Call the SpeechScore object to evaluate the speech metrics between 'noisy' and 'clean' audio
     # Arguments:
     # - {test_path, reference_path} supports audio directories or audio paths (.wav or .flac)
@@ -24,6 +27,7 @@ if __name__ == '__main__':
     
     print('score for a signle wav file')
     scores = mySpeechScore(test_path='audios/noisy.wav', reference_path='audios/clean.wav', window=None, score_rate=16000, return_mean=False)
+    #scores = mySpeechScore(test_path='audios/noisy.wav', reference_path=None) # for Non-instrusive tests
     # Pretty-print the resulting scores in a readable format
     pprint.pprint(scores)
 

@@ -5,6 +5,8 @@ class ScoreBasis:
         # is the score intrusive or non-intrusive ?
         self.intrusive = True #require a reference
         self.name = name
+        self.model = None
+        self.device = 'cpu'
 
     def windowed_scoring(self, audios, score_rate):
         raise NotImplementedError(f'In {self.name}, windowed_scoring is not yet implemented')

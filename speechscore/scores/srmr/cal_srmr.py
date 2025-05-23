@@ -6,7 +6,10 @@
 
 from __future__ import division
 import numpy as np
-from scipy.signal import hamming
+try:
+    from scipy.signal.windows import hamming
+except ImportError:
+    from scipy.signal import hamming
 from .hilbert import hilbert
 from .modulation_filters import compute_modulation_cfs, modulation_filterbank,\
                                 modfilt

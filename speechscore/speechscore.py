@@ -19,6 +19,7 @@ from scores.csig import CSIG
 from scores.cbak import CBAK
 from scores.covl import COVL
 from scores.mcd import MCD
+from scores.nisqa.nisqa import NISQA
 
 def compute_mean_results(*results):
     mean_result = {}
@@ -205,6 +206,8 @@ def SpeechScore(scores=''):
             score_cls += COVL()
         elif score.lower() == 'mcd':
             score_cls += MCD()
+        elif score.lower() == 'nisqa':
+            score_cls += NISQA()
         else:
            print('score is pending implementation...')
     return score_cls
