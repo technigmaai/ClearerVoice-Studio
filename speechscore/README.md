@@ -28,6 +28,7 @@ SpeechScore is a wrapper designed for assessing speech quality. It includes a co
 |13.| SSNR | No | SSNR (Segmental Signal-to-Noise Ratio) is an extension of SNR (Signal-to-Noise Ratio) and for evaluating the quality of speech signals in shorter segments or frames. It is calculated by dividing the power of the clean speech signal by the power of the noise signal, computed over small segments of the speech signal. | See paper: <a href="https://www.isca-archive.org/icslp_1998/hansen98_icslp.pdf">An effective quality evaluation protocol for speech enhancement algorithms<a/>|
 |14.| STOI| No | STOI (Short-Time Objective Intelligibility Index) measures speech quality and intelligibility by operateing on short-time segments of the speech signal and computes a score between 0 and 1. | See <a href="https://github.com/mpariente/pystoi">github page <a/> |
 |15.| NISQA| Yes |NISQA is a deep learning model for predicting speech quality in communication systems, providing overall quality scores and detailed insights into Noisiness, Coloration, Discontinuity, and Loudness.|see <a href="https://github.com/gabrielmittag/NISQA">gtihub page<a/>|
+|16.| DISTILL_MOS |Yes | Distill-MOS is a compact and efficient speech quality assessment model learned from a larger speech quality assessment model based on wav2vec2.0 XLS-R embeddings.|The work is described in the paper: <a href="https://arxiv.org/pdf/2502.05356">Distillation and Pruning for Scalable Self-Supervised Representation-Based Speech Quality Assessment"<a/> ICASSP 2025|
 
 ## 2. Usage
 
