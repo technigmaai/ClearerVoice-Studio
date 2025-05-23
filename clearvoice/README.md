@@ -33,7 +33,23 @@ You don't need to manually download the pre-trained models—they are automatica
     ``` python
     from clearvoice import ClearVoice
     ```
+### Install FFmpeg (optional)
 
+Clearvoice relies on FFmpeg for audio format conversion. If you're only working with `.wav` files, FFmpeg is not required. For all other formats, please follow the instructions below to install FFmpeg.
+
+1. On **Ubuntu/Debian**:
+   ``` sh
+   sudo apt update
+   sudo apt install ffmpeg
+   ```
+2. On **macOS** (with Homebrew):
+   ``` sh
+   brew install ffmpeg
+   ```
+3. On **Windows**:
+    Download the static build from https://ffmpeg.org/download.html.
+    Unzip and add the bin folder (which contains ffprobe.exe) to your System PATH.
+   
 ### Install from GitHub
 
 1. **Clone the GitHub repository and install the requirements:**
