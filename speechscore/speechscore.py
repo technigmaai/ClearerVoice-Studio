@@ -20,6 +20,7 @@ from scores.cbak import CBAK
 from scores.covl import COVL
 from scores.mcd import MCD
 from scores.nisqa.nisqa import NISQA
+from scores.distill_mos.distill_mos import DISTILL_MOS 
 
 def compute_mean_results(*results):
     mean_result = {}
@@ -208,6 +209,8 @@ def SpeechScore(scores=''):
             score_cls += MCD()
         elif score.lower() == 'nisqa':
             score_cls += NISQA()
+        elif score.lower() == 'distill_mos':
+        	score_cls += DISTILL_MOS()
         else:
            print('score is pending implementation...')
     return score_cls
