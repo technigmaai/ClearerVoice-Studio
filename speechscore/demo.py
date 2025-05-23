@@ -8,7 +8,7 @@ if __name__ == '__main__':
     # Initialize a SpeechScore object with a list of score metrics to be evaluated
     # Supports any subsets of the list
     
-    # Non-instrusive tests ['NISQA', 'DNSMOS', 'SRMR'] : No reference audio is required
+    # Non-intrusive tests ['NISQA', 'DNSMOS', 'SRMR'] : No reference audio is required
     
     mySpeechScore = SpeechScore([
         'SRMR', 'PESQ', 'NB_PESQ', 'STOI', 'SISDR', 
