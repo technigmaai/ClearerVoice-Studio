@@ -1,4 +1,4 @@
-# SpeechScore
+# SpeechScore : A toolkit for intrusive and non-intrusive speech quality assessment
 
 ## 👉🏻[HuggingFace Space Demo](https://huggingface.co/spaces/alibabasglab/SpeechScore)👈🏻
 
