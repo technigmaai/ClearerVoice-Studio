@@ -74,15 +74,10 @@ Alternatively, welcome to join our DingTalk and WeChat groups to share and discu
       <td style="text-align:center;">
         <a href="./asset/QR.jpg"><img alt="ClearVoice in DingTalk" src="https://img.shields.io/badge/ClearVoice-DingTalk-d9d9d9"></a>
       </td>
-      <td style="text-align:center;">
-        <a href="./asset/QR.jpg"><img alt="ClearVoice in WeChat" src="https://img.shields.io/badge/ClearVoice-WeChat-d9d9d9"></a>
-      </td>
     </tr>
     <tr>
        <td style="text-align:center;">
       <img alt="Light" src="./asset/dingtalk.png" width="68%" />
-      <td style="text-align:center;">
-      <img alt="Light" src="./asset/qr.png" width="23%" />
       </td>
     </tr>
   </table>
