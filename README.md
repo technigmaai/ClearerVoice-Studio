@@ -66,7 +66,7 @@ Contributors are welcomed to include more model architectures and tasks!
 If you have any comments or questions about ClearerVoice-Studio, feel free to raise an issue in this repository or contact us directly at:
 - email: {shengkui.zhao, zexu.pan}@alibaba-inc.com
 
-Alternatively, welcome to join our DingTalk and WeChat groups to share and discuss algorithms, technology, and user experience feedback. You may scan the following QR codes to join our official chat groups accordingly. 
+Alternatively, welcome to join our DingTalk group to share and discuss algorithms, technology, and user experience feedback. You may scan the following QR codes to join our official chat group. 
 
 <p align="center">
   <table>
