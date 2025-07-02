@@ -13,6 +13,7 @@
 
 ## News :fire:
 - Upcoming: More tasks will be added to ClearVoice.
+- [2025.6] Add an interface for [ClearVoice](https://github.com/modelscope/ClearerVoice-Studio/tree/main/clearvoice) that allows passing a Numpy array into the model and receiving its output as a NumPy array. It allows a more flexible call of the models during a training or inference pipeline. Please check out [`demo_Numpy2Numpy.py`](https://github.com/modelscope/ClearerVoice-Studio/blob/main/clearvoice/demo_Numpy2Numpy.py).
 - [2025.5] Updated speechscore with more non-intrusive metrics: NISQA and DISTILL_MOS
 - [2025.4] Updated pip installation for [ClearVoice](https://github.com/modelscope/ClearerVoice-Studio/tree/main/clearvoice). Now you can simply type `pip install clearvoice` to use all the pretrained models in ClearVoice, see project description in PyPi [link](https://pypi.org/project/clearvoice/).
 - [2025.4] Added a training script for speech super-resolution, supporting both retraining and fine-tuning of models. For details, refer to the documentation [here](https://github.com/modelscope/ClearerVoice-Studio/tree/main/train/speech_super_resolution).
