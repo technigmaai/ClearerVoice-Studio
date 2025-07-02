@@ -78,7 +78,13 @@ Clearvoice relies on FFmpeg for audio format conversion. If you're only working 
     python demo_with_more_comments.py
     ```
 
-- You may activate each demo case by setting to True in `demo.py` and `demo_with_more_comments.py`.
+    or
+    ``` sh
+    cd ClearerVoice-Studio/clearvoice
+    python demo_Numpy2Numpy.py
+    ```
+- You may activate each demo case by setting to True in `demo.py`, `demo_with_more_comments.py`, and `demo_Numpy2Numpy.py`.
+- In `demo_Numpy2Numpy.py`, we added a new interface for ClearVoice that supports from numpy input to numpy output, instead of file I/O.
 - Supported audio format: .flac .wav
 - Supported video format: .avi .mp4 .mov .webm
 
