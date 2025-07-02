@@ -440,11 +440,10 @@ def decode_one_audio_mossformer2_se_48k(model, device, inputs, args):
 
         # Pass filter banks through the model
         Out_List = model(fbanks_batch)
-        pred_mask = Out_List[-1]  # Get the predicted mask
-        
+        pred_mask_b = Out_List[-1]  # Get the predicted mask
         for batch_idx in range(b): 
             spectrum = stft(audio[batch_idx, :], args)  # Apply STFT to the audio
-            pred_mask = pred_mask[batch_idx:batch_idx+1, :, :].permute(2, 1, 0)  # Permute dimensions for masking
+            pred_mask = pred_mask_b[batch_idx:batch_idx+1, :, :].permute(2, 1, 0)  # Permute dimensions for masking
             masked_spec = spectrum * pred_mask.detach().cpu()  # Apply mask to the spectrum
             masked_spec_complex = masked_spec[:, :, 0] + 1j * masked_spec[:, :, 1]  # Convert to complex form
         
@@ -452,7 +451,6 @@ def decode_one_audio_mossformer2_se_48k(model, device, inputs, args):
             if batch_idx == 0:
                 outputs = istft(masked_spec_complex, args, len(audio[batch_idx,:]))
                 outputs = outputs.unsqueeze(0)
-                print(f'outputs: {outputs.shape}')
             else:
                 outputs_tmp = istft(masked_spec_complex, args, len(audio[batch_idx,:]))
                 outputs_tmp = outputs_tmp.unsqueeze(0)
