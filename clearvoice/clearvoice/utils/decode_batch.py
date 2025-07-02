@@ -451,8 +451,11 @@ def decode_one_audio_mossformer2_se_48k(model, device, inputs, args):
             # Reconstruct audio from the masked spectrogram
             if batch_idx == 0:
                 outputs = istft(masked_spec_complex, args, len(audio[batch_idx,:]))
+                outputs = outputs.unsqueeze(0)
+                print(f'outputs: {outputs.shape}')
             else:
                 outputs_tmp = istft(masked_spec_complex, args, len(audio[batch_idx,:]))
+                outputs_tmp = outputs_tmp.unsqueeze(0)
                 outputs = torch.cat([outputs, outputs_tmp], dim=0)	
         """
         audio = torch.from_numpy(inputs).type(torch.FloatTensor)

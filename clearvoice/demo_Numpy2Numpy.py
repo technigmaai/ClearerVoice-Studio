@@ -40,9 +40,12 @@ if True:
     audio = audio.astype(np.float32)
     ## audio: [batch, length]
     ##output_wav: [batch, length]
+    audio = np.concatenate((audio, audio, audio, audio, audio), 1)
+    audio = np.concatenate((audio, audio), 0)
+    print(f'audio in: {audio.shape}')
     output_wav = myClearVoice(audio, False)
     print(f'output_wav: {output_wav.shape}')
-    sf.write('samples/output_MossFormer2_SE_48K_batch.wav', output_wav, 48000)    
+    sf.write('samples/output_MossFormer2_SE_48K_batch.wav', output_wav[0], 48000)    
       
 ##-----Demo Four: use FRCRN_SE_16K model for speech enhancement -----------------
 if False:
