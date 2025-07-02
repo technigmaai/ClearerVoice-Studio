@@ -408,10 +408,10 @@ def decode_one_audio_mossformer2_se_48k(model, device, inputs, args):
 
                     # Store the output segment in the output tensor
                     if current_idx == 0:
-                        outputs[batch_idx, current_idx:current_idx + window - give_up_length] = output_segment[:-give_up_length]
+                        outputs[batch_idx, batch_idx, current_idx:current_idx + window - give_up_length] = output_segment[:-give_up_length]
                     else:
                         output_segment = output_segment[-window:]  # Get the latest window of output
-                        outputs[batch_idx, current_idx + give_up_length:current_idx + window - give_up_length] = output_segment[give_up_length:-give_up_length]
+                        outputs[batch_idx, batch_idx, current_idx + give_up_length:current_idx + window - give_up_length] = output_segment[give_up_length:-give_up_length]
                 
                     current_idx += stride  # Move to the next segment
 

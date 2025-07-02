@@ -8,7 +8,7 @@ This demo shows that ClearVoice provide batch processing from numpy input to num
 """
 
 ##-----Demo One: use MossFormer2_SR_48K model for speech super-resolution -----------------
-if True:
+if False:
     print('testing MossFormer2_SR_48K ...')
     myClearVoice = ClearVoice(task='speech_super_resolution', model_names=['MossFormer2_SR_48K'])
 
@@ -27,7 +27,7 @@ if True:
     sf.write('samples/output_MossFormer2_SR_48K_input_sr.wav', output_wav[0,:], 48000) 
 
 ##-----Demo Three: use MossFormer2_SE_48K model for speech enhancement -----------------
-if False:
+if True:
     print(f'testing MossFormer2_SE_48K ...')
     myClearVoice = ClearVoice(task='speech_enhancement', model_names=['MossFormer2_SE_48K'])
 
