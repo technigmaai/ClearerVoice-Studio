@@ -23,6 +23,7 @@ from tqdm import tqdm
 import numpy as np
 from pydub import AudioSegment
 from .utils.decode import decode_one_audio
+from .utils.decode_batch import decode_one_audio_batch
 from .dataloader.dataloader import DataReader
 
 MAX_WAV_VALUE = 32768.0
@@ -53,8 +54,9 @@ class SpeechModel:
         """
         # Check if mps is available
         if mps.is_available():
-            args.use_cuda = 1
-            self.device = torch.device('mps')
+            args.use_cuda = 0
+            #self.device = torch.device('mps')
+            self.device = torch.device('cpu')
         # Check if a GPU is available
         elif torch.cuda.is_available():
             # Find the GPU with the most free memory using a custom method
@@ -218,6 +220,22 @@ class SpeechModel:
             output_audios_np = np.array(output_audios)
         return output_audios_np
 
+    def decode_data(self, input_data):
+        """
+        Decodes the input audio data using the loaded model and ensures the output matches the original audio length.
+
+        This method processes the audio through a speech model (e.g., for enhancement, separation, etc.),
+        and truncates the resulting audio to match the original input's length. The method supports multiple speakers 
+        if the model handles multi-speaker audio.
+
+        Returns:
+        output_audio: The decoded audio after processing, truncated to the input audio length. 
+                  If multi-speaker audio is processed, a list of truncated audio outputs per speaker is returned.
+        """
+        # Decode the audio using the loaded model on the given device (e.g., CPU or GPU)
+        output_audio = decode_one_audio_batch(self.model, self.device, input_data, self.args)
+        return output_audio
+       
     def process(self, input_path, online_write=False, output_path=None):
         """
         Load and process audio files from the specified input path. Optionally, 

@@ -11,8 +11,8 @@ input_path: "data/wsj0_2mix_16k_fullpath.lst"  # an input dir or input scp file
 output_dir: "outputs/MossFormer2_SS_16K_wsj0_2mix" ## output dir to store processed audio
 
 # decode parameters
-one_time_decode_length: 30 #maximum segment length for one-pass decoding (seconds), longer audio (>3s) will use segmented decoding
-decode_window: 30 #one-pass decoding length
+one_time_decode_length: 2 #maximum segment length for one-pass decoding (seconds), longer audio (>3s) will use segmented decoding
+decode_window: 2 #one-pass decoding length
 
 num_spks: 2
 encoder_kernel_size: 16

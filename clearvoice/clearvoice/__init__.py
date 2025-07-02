@@ -4,6 +4,8 @@ __all__ = ['ClearVoice']
 
 from .network_wrapper import network_wrapper
 import os
+import numpy as np
+import torch
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -40,6 +42,21 @@ class ClearVoice:
             self.models += [model]  
             
     def __call__(self, input_path, online_write=False, output_path=None):
+        if isinstance(input_path, str):
+            return self.call_io_mode(input_path=input_path, online_write=online_write, output_path=output_path)
+        elif isinstance(input_path, np.ndarray) or isinstance(input_path, torch.Tensor):
+            return self.call_t2t_mode(input_data=input_path)
+        else:
+            print("Unknown type:", type(input_path))
+        
+    def call_t2t_mode(self, input_data):
+        if len(self.models) > 1:
+    	    print('This tensor-to-tensor mode supports only one model!')
+    	    return
+        else:
+            return self.models[0].decode_data(input_data)
+                
+    def call_io_mode(self, input_path, online_write=False, output_path=None):
         results = {}
         for model in self.models:
             result = model.process(input_path, online_write, output_path)
@@ -51,7 +68,9 @@ class ClearVoice:
                 return results[model.name]
             else:
                 return results
-
+        else:
+       	    return
+               
     def write(self, results, output_path):
         add_subdir = False
         use_key = False

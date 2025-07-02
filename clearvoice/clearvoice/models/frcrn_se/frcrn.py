@@ -199,6 +199,44 @@ class DCCRN(nn.Module):
         _, est_wav, _ = self.apply_mask(cmp_spec, cmp_mask2)
         return est_wav[0]  # Return the estimated waveform
 
+    def inference_batch(self, inputs):
+        """
+        Inference method for the FRCRN model.
+
+        This method performs a forward pass through the model to estimate the clean waveform
+        from the noisy input.
+
+        Args:
+            inputs (torch.Tensor): Input tensor representing audio signals.
+
+        Returns:
+            torch.Tensor: Estimated waveform after processing.
+        """
+        # Compute the complex spectrogram using STFT
+        cmp_spec = self.stft(inputs)  # [B, D*2, T]
+        cmp_spec = torch.unsqueeze(cmp_spec, 1)  # [B, 1, D*2, T]
+
+        # Split into real and imaginary parts
+        cmp_spec = torch.cat([
+            cmp_spec[:, :, :self.feat_dim, :],  # Real part
+            cmp_spec[:, :, self.feat_dim:, :],  # Imaginary part
+        ], 1)  # [B, 2, D, T]
+
+        cmp_spec = torch.unsqueeze(cmp_spec, 4)  # [B, 2, D, T, 1]
+        cmp_spec = torch.transpose(cmp_spec, 1, 4)  # [B, 1, D, T, 2]
+
+        # Pass through the UNet to estimate masks
+        unet1_out = self.unet(cmp_spec)
+        cmp_mask1 = torch.tanh(unet1_out)
+        
+        unet2_out = self.unet2(unet1_out)
+        cmp_mask2 = torch.tanh(unet2_out)
+        cmp_mask2 = cmp_mask2 + cmp_mask1  # Combine masks
+
+        # Apply the estimated mask to compute the estimated waveform
+        _, est_wav, _ = self.apply_mask(cmp_spec, cmp_mask2)
+        return est_wav  # Return the estimated waveform
+       
     def apply_mask(self, cmp_spec, cmp_mask):
         """
         Apply the estimated masks to the complex spectrogram.
