@@ -54,9 +54,8 @@ class SpeechModel:
         """
         # Check if mps is available
         if mps.is_available():
-            args.use_cuda = 0
-            #self.device = torch.device('mps')
-            self.device = torch.device('cpu')
+            args.use_cuda = 1
+            self.device = torch.device('mps')
         # Check if a GPU is available
         elif torch.cuda.is_available():
             # Find the GPU with the most free memory using a custom method
