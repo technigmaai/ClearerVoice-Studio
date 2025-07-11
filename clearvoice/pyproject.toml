@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clearvoice"
-version = "0.1.1"
+version = "0.1.2"
 description = "A unified inference platform for speech processing tasks"
 authors = [
   { name = "Zhao Shengkui", email = "shengkui.zhao@alibaba-inc.com" },
