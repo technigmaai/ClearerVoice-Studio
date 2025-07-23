@@ -19,7 +19,7 @@ gammatone
 librosa==0.10.2.post1
 opencv-python==4.10.0.84
 mir_eval==0.7
-numpy>=1.24.3
+numpy>=1.26,<2.0
 tensorboard==2.14.0
 torch-complex>=0.4.4
 rotary-embedding-torch==0.8.3
