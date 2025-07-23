@@ -82,29 +82,73 @@ class SpeechModel:
 
     def get_free_gpu(self):
         """
-        Identifies the GPU with the most free memory using 'nvidia-smi' and returns its index.
+        Identifies the GPU with the most free memory using 'nvidia-smi' or 'rocm-smi' and returns its index.
 
         This function queries the available GPUs on the system and determines which one has 
-        the highest amount of free memory. It uses the `nvidia-smi` command-line tool to gather 
-        GPU memory usage data. If successful, it returns the index of the GPU with the most free memory.
-        If the query fails or an error occurs, it returns None.
+        the highest amount of free memory. It uses the `nvidia-smi` command-line tool for NVIDIA GPUs
+        or `rocm-smi` for AMD GPUs to gather GPU memory usage data. If successful, it returns the 
+        index of the GPU with the most free memory. If the query fails or an error occurs, it returns None.
 
         Returns:
         int: Index of the GPU with the most free memory, or None if no GPU is found or an error occurs.
         """
         try:
-            # Run nvidia-smi to query GPU memory usage and free memory
-            result = subprocess.run(['nvidia-smi', '--query-gpu=memory.used,memory.free', '--format=csv,nounits,noheader'], stdout=subprocess.PIPE)
-            gpu_info = result.stdout.decode('utf-8').strip().split('\n')
-
-            free_gpu = None
-            max_free_memory = 0
-            for i, info in enumerate(gpu_info):
-                used, free = map(int, info.split(','))
-                if free > max_free_memory:
-                    max_free_memory = free
-                    free_gpu = i
-            return free_gpu
+            # First try nvidia-smi (NVIDIA GPUs)
+            try:
+                result = subprocess.run(['nvidia-smi', '--query-gpu=memory.used,memory.free', '--format=csv,nounits,noheader'], 
+                                      stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                if result.returncode == 0:
+                    gpu_info = result.stdout.decode('utf-8').strip().split('\n')
+                    
+                    free_gpu = None
+                    max_free_memory = 0
+                    for i, info in enumerate(gpu_info):
+                        used, free = map(int, info.split(','))
+                        if free > max_free_memory:
+                            max_free_memory = free
+                            free_gpu = i
+                    return free_gpu
+            except FileNotFoundError:
+                pass  # nvidia-smi not found, try rocm-smi
+            
+            # Try rocm-smi (AMD GPUs with ROCm)
+            try:
+                result = subprocess.run(['rocm-smi', '--showmeminfo', 'vram'], 
+                                      stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                if result.returncode == 0:
+                    output = result.stdout.decode('utf-8')
+                    lines = output.strip().split('\n')
+                    
+                    free_gpu = None
+                    max_free_memory = 0
+                    for line in lines:
+                        if 'VRAM Total Memory (B):' in line:
+                            # Extract GPU index and total memory
+                            parts = line.split(':')
+                            if len(parts) >= 3:
+                                gpu_part = parts[0].strip()
+                                if gpu_part.startswith('GPU['):
+                                    gpu_id = int(gpu_part[4:-1])  # Extract number from GPU[0]
+                                    total_memory = int(parts[2].strip())
+                        elif 'VRAM Total Used Memory (B):' in line:
+                            # Extract used memory for the current GPU
+                            parts = line.split(':')
+                            if len(parts) >= 3:
+                                used_memory = int(parts[2].strip())
+                                free_memory = total_memory - used_memory
+                                
+                                if free_memory > max_free_memory:
+                                    max_free_memory = free_memory
+                                    free_gpu = gpu_id
+                    
+                    return free_gpu if free_gpu is not None else 0  # Return 0 if only one GPU
+            except FileNotFoundError:
+                pass  # rocm-smi not found
+            
+            # If neither nvidia-smi nor rocm-smi is available, return 0 (assume single GPU)
+            print("Warning: Neither nvidia-smi nor rocm-smi found. Assuming single GPU.")
+            return 0
+            
         except Exception as e:
             print(f"Error finding free GPU: {e}")
             return None
@@ -180,6 +224,11 @@ class SpeechModel:
                  state[key] = pretrained_model['module.'+key]
             elif self.print: print(f'{key} not loaded')
         model.load_state_dict(state)
+        
+        # Ensure model is on the correct device
+        if hasattr(self, 'device'):
+            model.to(self.device)
+            print(f"Model moved to device: {self.device}")
 
     def decode(self):
         """

@@ -39,7 +39,22 @@ class ClearVoice:
         self.models = []
         for model_name in model_names:
             model = self.network_wrapper(task, model_name)
-            self.models += [model]  
+            self.models += [model]
+        
+        # Ensure all models are on the correct device
+        self._ensure_models_on_device()
+    
+    def _ensure_models_on_device(self):
+        """Ensure all models are on the correct device (GPU/CPU)"""
+        for model in self.models:
+            if hasattr(model, 'device') and hasattr(model, 'model'):
+                if isinstance(model.model, torch.nn.Module):
+                    model.model.to(model.device)
+                    print(f"Model {model.name} moved to device: {model.device}")
+                elif isinstance(model.model, torch.nn.ModuleList):
+                    for submodel in model.model:
+                        submodel.to(model.device)
+                    print(f"ModelList {model.name} moved to device: {model.device}")  
             
     def __call__(self, input_path, online_write=False, output_path=None):
         if isinstance(input_path, str):
@@ -51,8 +66,8 @@ class ClearVoice:
         
     def call_t2t_mode(self, input_data):
         if len(self.models) > 1:
-    	    print('This tensor-to-tensor mode supports only one model!')
-    	    return
+            print('This tensor-to-tensor mode supports only one model!')
+            return
         else:
             return self.models[0].decode_data(input_data)
                 
@@ -69,7 +84,7 @@ class ClearVoice:
             else:
                 return results
         else:
-       	    return
+            return
                
     def write(self, results, output_path):
         add_subdir = False
